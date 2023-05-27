@@ -9,11 +9,29 @@
 const prompt = require('prompt-sync')()
 
 const deposit = () => {
-    const depositAmmount = parseFloat(prompt('Enter a deposit ammount: '))
 
-    if (isNaN(depositAmmount) || depositAmmount <= 0) {
-        console.log('Invalid deposit, try again.');
+    while(true) {
+        const depositAmmount = parseFloat(prompt('Enter a deposit ammount: '))
+
+        if (isNaN(depositAmmount) || depositAmmount <= 0) {
+            console.log('Invalid deposit, try again.');
+        } else {
+            return depositAmmount
+        }
     }
 };
 
-deposit()
+const getnumberOfLines = () => {
+    while(true) {
+        const numberOfLines = parseFloat(prompt('Enter the number of lines to bet (1-3): '))
+
+        if (isNaN(numberOfLines) || numberOfLines <= 0 || numberOfLines > 3) {
+            console.log('Invalid number of lines, please try again.');
+        } else {
+            return numberOfLines
+        }
+    }
+}
+
+const depositAmmount = deposit()
+const numberOfLines = getnumberOfLines()
